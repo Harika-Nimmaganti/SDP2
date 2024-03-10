@@ -1,0 +1,16 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+    {% if form.errors %}
+        <div class="error">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</form>
